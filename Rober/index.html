@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>AE-3. DOM Roberto Gonzalez Moron</title>
+
+    <script type="text/javascript">
+
+
+
+
+        function validacionNombre() {
+            console.log("Validando nombre")
+
+
+            formatoNombre = /^[A-Z]/;
+
+            if (nombre.value.match(formatoNombre)) {
+
+                console.log("Validado");
+
+            }
+            else {
+                alert('[ERROR] El formato nombre');
+                console.log("Error al validar");
+                return false;
+            }
+
+        }
+
+        function validacionDireccion() {
+            console.log("Validando Direccion")
+            if (direccion.value.trim() == "") {
+                alert('[ERROR] El campo direccion debe de estar relleno');
+                console.log("Error al validar");
+                return false;
+            }
+            console.log("Validado");
+        }
+
+        function validacionTelefono() {
+            console.log("Validando Telefono")
+
+            //Creamos la expresion regular con nombre formatoTelefono
+            //El formato que le he dado ha sido 6XX XX XX XX o 7XX XX XX XX, de numeros moviles dentro de España
+            //Empieza 6 o 7, 2 num 0-9, espacio, 2 num 0-9, espacio, 2 num 0-9....
+            formatoTelefono = /^([6-7])[0-9]{2}[ ][0-9]{2}[ ][0-9]{2}[ ][0-9]{2}$/;
+
+            if (telefono.value.match(formatoTelefono)) {
+
+                console.log("Validado");
+
+            }
+            else {
+                alert('[ERROR] El formato telefono es incorrecto');
+                console.log("Error al validar");
+                return false;
+            }
+
+        }
+
+        function validacionEmail() {
+            console.log("Validando Email")
+
+            //Creamos la expresion regular con nombre formatoEmail
+            //El formato que le he dado ha sido que tiene que detectar una @ y minimo un punto.
+            // Podra ser blabla@loquesea.com o blabla@loquesea.co.uk, etc
+            // palabra@palabra.palabra.....
+            formatoEmail = /\w+@{1}\w+([.])/;
+
+            if (email.value.match(formatoEmail)) {
+
+                console.log("Validado");
+
+            }
+            else {
+                alert('[ERROR] El formato de Email es incorrecto');
+                console.log("Error al validar");
+                return false;
+            }
+
+        }
+
+        //Con la funcion validarTamPizza vamos a recorrer un array donde
+        //comprobaremos si esta chequeado o no el tamaño de la pizza
+        function validarTamPizza() {
+            console.log("Validando tamaño de pizza");
+
+            var tamaPizza = document.getElementsByName("tamaPizza");
+            var pizzaSeleccionada = false;
+            for (var i = 0; i < tamaPizza.length; i++) {
+                if (tamaPizza[i].checked) {
+                    pizzaSeleccionada = true;
+                    console.log("Tamaño validado");
+                    break;
+                }
+            }
+                
+            if (!pizzaSeleccionada) {
+                alert('Error] Debe seleccionar al menos un tamaño de pizza.');
+                console.log("Error al validar");
+
+
+            }
+        }
+
+        //Con la funcion validarTamPizza vamos a recorrer un array donde
+        //comprobaremos si esta chequeado o no el tamaño de la pizza
+        function validarIngredPizza() {
+            console.log("Validando ingredientes de la pizza");
+
+            var ingredPizza = document.getElementsByName("ingredPizza");
+            var ingredSeleccionado = false;
+            for (var i = 0; i < ingredPizza.length; i++) {
+                if (ingredPizza[i].checked) {
+                    ingredSeleccionado = true;
+                    console.log("Ingrediente validado");
+                    break;
+                }
+            }
+            if (!ingredSeleccionado) {
+                alert('Error] Debe seleccionar al menos un ingrediente para la pizza.');
+                console.log("Error al validar");
+
+
+            }
+        }
+
+
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+    <div id="contenedorPrincipal">
+
+        <h1>Pizzeria Faróli</h1>
+        <br />
+        <br />
+
+
+
+       <h2>Pide tu pizza aquí</h2>
+        
+       <form id="formularioPedido" >
+
+           <fieldset>
+               <legend>Datos personales</legend>
+               <label>Nombre :<input type="text" id="nombre" placeholder="EJEM: Roberto" /></label>
+               <input type="text" id="direccion" placeholder="Introduce tu direccion" />
+               <input type="text" id="telefono" placeholder="EJEM: 6XX XX XX XX" />
+               <input type="text" id="email" placeholder="EJEM: pepito@hotmail.com" />
+           </fieldset>
+
+           <h2>Crea tu pizza</h2>
+
+           <fieldset>
+               <legend>Tamaño de pizza</legend>
+               <label for='opcion1'><input type='radio' name='tamaPizza' value="peque" >Pequeña </label>
+               <label for='opcion2'><input type='radio' name='tamaPizza' value="media">Mediana </label>
+               <label for='opcion3'><input type='radio' name='tamaPizza' value="grande">Grande </label>
+           </fieldset>
+           
+           <fieldset>
+               <legend>Selecciona tus ingredientes (Minimo un ingrediente)</legend>
+
+               <label><input type='checkbox' id='checkboxIngredientes' name='ingredPizza' value='Checkbox 1'>Bacon</label>
+               <label><input type='checkbox' id='checkboxIngredientes' name='ingredPizza' value='Checkbox 2'>Pollo</label>
+               <label><input type='checkbox' id='checkboxIngredientes' name='ingredPizza' value='Checkbox 2'>Cebolla</label>
+               <label><input type='checkbox' id='checkboxIngredientes' name='ingredPizza' value='Checkbox 2'>Pepperoni</label>
+           </fieldset>
+
+
+           <fieldset>
+               <legend>Confirma tu pedido</legend>
+               <input type="button" id="botonProcesar" value="Procesar Pedido" 
+                      onclick="validacionNombre(); validacionDireccion();validacionTelefono();validacionEmail();validarTamPizza()
+                               validarIngredPizza()";/>
+           </fieldset>
+
+
+
+
+       </form>
+
+    </div>
+</body>
+</html>
