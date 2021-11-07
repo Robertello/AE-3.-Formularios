@@ -56,7 +56,7 @@
         font-size: large;
       }
 
-      input[type="submit"] {
+      input[type="button"] {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -72,7 +72,7 @@
         float: left;
       }
 
-      input[type="submit"]:hover {
+      input[type="button"]:hover {
         background-color: #a72626;
       }
 
@@ -110,7 +110,7 @@
 
       /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
       @media screen and (max-width: 600px) {
-        input[type="submit"] {
+        input[type="button"] {
           width: 100%;
           margin-top: 0;
         }
@@ -289,7 +289,7 @@
           Pollo
         </label>
       </fieldset>
-      <input type="submit" value="Procesar el pedido" />
+      <input type="button" value="Procesar el pedido" onclick="validacion()"/>
     </form>
 
     <script>
@@ -417,13 +417,6 @@
           email.value.trim() != "" &&
           telefono.value.trim() != ""
         ) {
-          alert(
-            "El pedido a nombre de " +
-              nombre.value +
-              " con el precio de " +
-              precio() +
-              " euros, se ha realizado correctamente!"
-          );
           swal({
             title: "Pedido aceptado!",
             text:
@@ -439,9 +432,6 @@
         }
       }
 
-      window.onload = function () {
-        formulario.onsubmit = validacion;
-      };
 
       function cambiarTamano() {
         let queso = document.querySelector('input[value="queso"]');
