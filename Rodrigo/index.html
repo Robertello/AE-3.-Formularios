@@ -21,12 +21,33 @@
         box-sizing: border-box;
         font-family: "Open Sans", sans-serif;
       }
+      .background-image {
+        position: fixed;
+        top: -10%;
+        z-index: -1;
+        display: block;
+        background-image: url('https://www.eluniversal.com.mx/sites/default/files/2019/07/03/sky_rocket_pizza_menu_el_universal.jpg');
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        width: 100%;
+        height: 120%;
+        -webkit-filter: blur(2px);
+        -moz-filter: blur(2px);
+        -o-filter: blur(2px);
+        -ms-filter: blur(2px);
+        filter: blur(2px);
+      }
+
+
       h2 {
         font-family: "Arizonia", cursive;
         font-size: 3em;
         text-align: center;
         margin-top: 0;
         margin-bottom: 0;
+        color: #fff;
       }
       /*Posicionar un form a el lateral del a pagina*/
       form {
@@ -39,6 +60,7 @@
         background: #fff;
         box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2),
           0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        border-radius: 12%;
       }
       /*Estilos de los elementos del formulario*/
 
@@ -79,6 +101,7 @@
       /*legend en negrita*/
       legend {
         font-weight: bold;
+        font-size: larger;
       }
       /*posicionar el div pizza a la derecha y en el centro*/
       .pizza {
@@ -92,10 +115,13 @@
         border-radius: 50%;
         overflow: hidden;
         background: rgb(255, 255, 255);
-        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2),
-          0 5px 5px 0 rgba(0, 0, 0, 0.24);
-        background: rgb(216, 216, 216) url("./img/grande/todo.png") no-repeat
-          center;
+        box-shadow: 0 10px 20px 0 rgba(231, 231, 231, 0.2),
+          0 5px 5px 0 rgba(228, 228, 228, 0.24);
+        background-image: url("./img/grande/todo.png");
+        background-color: #f1f1f1;
+        background-position: center; 
+        background-repeat: no-repeat; 
+        background-size: cover; 
       }
       #gif {
         text-align: center;
@@ -174,8 +200,9 @@
     </style>
   </head>
   <body>
+    <div class="background-image"></div>
     <h2>Elige tu piza</h2>
-    <img src="./img/createpizza.gif" id="gif" alt="" />
+    <!-- <img src="./img/createpizza.gif" id="gif" alt="" /> -->
     <div class="pizza"></div>
     <form id="formulario" action="">
       <fieldset>
