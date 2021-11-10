@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pizza Planet</title>
+    <script type="text/javascript" src="js/funcForm.js"></script>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+
+    }
+    body {
+        font-family: Arial, sans-serif;
+        font-weight: 100;
+        font-size: 15px;
+        line-height: 30px;
+        color: rgb(19, 6, 201);
+        background: #61f766;
+        max-width: 400px;
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+        
+    }
+    form{
+        background: #F9F9F9;
+        padding: 25px;
+        margin: 150px 0;
+        width: 100%;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        border-radius: 15px;
+    }
+    #img{
+        width: 100%;
+    }
+    fieldset{
+        width: 100%;
+        border: 1px solid rgb(250, 234, 4);
+        border-radius: 15px;
+        background: #FFF;
+        margin: 0 0 5px;
+        padding: 10px;
+        margin: 5px 0 15px;
+    }
+    label{
+        display: block;
+        font-size: 15px;
+        font-weight: 400;
+    }
+    
+    #botonPedido{
+        cursor: pointer;
+        width: 100%;
+        border: none;
+        border-radius: 15px;
+        background: #61f766;
+        color: rgb(19, 6, 201);
+        margin: 0 0 5px;
+        padding: 10px;
+        font-size: 25px;
+    }
+    </style>
+</head>
+<body>
+    <form id="formulario" action="">
+        <img src=https://static.wikia.nocookie.net/logo-timeline/images/c/ca/Pizza_Planet_logo_2.jpg/revision/latest/scale-to-width-down/375?cb=20200222170752>
+
+        <h1>Pedido</h1>
+        <fieldset>
+            <legend><h3>Datos de entrega: </h3></legend>
+            <label>Nombre: <input type="text" id="nombre" value=""  placeholder="Ej: Andy"></label></br>
+            <label>Direccion: <input type="text" id="direccion" value="" placeholder="Ej: Calle Infinito, 8"></label></br>
+            <label>Teléfono: <input type="text" id="telefono" value=""  placeholder="Ej: 6********"></label></br>
+            <label>Email: <input type="text" id="email" value="" placeholder="Ej: pizzaplanet@mail.es"></label>
+        </fieldset>
+        <fieldset>
+        <legend><h3>¿De qué tamaño quieres tu pizza?</h3></legend>
+            <input type="radio" id="pequeña" name="tamaño" value="5">Pequeña</input>
+            <input type="radio" id="mediana" name="tamaño" value="10">Mediana</input>
+            <input type="radio" id="grande" name="tamaño" value="15">Grande</input>
+        </br>
+        </br>
+        <legend><h3>¿Qué ingredientes quieres en tu pizza?</h3></legend>
+            <input type="checkbox" id="queso" name="ingedientes" value="1"> Queso</input>
+            <input type="checkbox" id="jamon" name="ingedientes" value="1"> Jamon</input>
+            <input type="checkbox" id="pollo" name="ingedientes" value="1"> Pollo</input>
+            <input type="checkbox" id="peperoni" name="ingedientes" value="1"> Peperoni</input>
+        </fieldset>
+        </br>
+        <input type="submit" id="botonPedido" value= "Procesar Pedido" onclick="validacion()">
+
+    </form>
+</body>
+</html>
