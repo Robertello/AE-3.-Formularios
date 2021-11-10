@@ -185,7 +185,6 @@
             type="text"
             name="name"
             id="nombre"
-            pattern="^[A-Z][A-z]+$"
             placeholder="Nombre"
           />
         </label>
@@ -194,7 +193,6 @@
             type="text"
             name="direccion"
             id="direccion"
-            pattern="[A-Za-z0-9'\.\-\s\,]"
             placeholder="Direccion"
           />
         </label>
@@ -203,7 +201,6 @@
             type="text"
             name="email"
             id="email"
-            pattern="[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+"
             placeholder="Email"
           />
         </label>
@@ -321,49 +318,109 @@
           return precio;
         }
 
-        if (nombre.value.trim() == "") {
-          // Si no se cumple la condicion...
-          swal({
-            title: "Error!",
-            text: "El campo nombre debe estar relleno!",
-            icon: "error",
-            button: "Ok",
-          });
-          return false;
-        }
 
-        if (direccion.value.trim() == "") {
-          // Si no se cumple la condicion...
-          swal({
-            title: "Error!",
-            text: "El campo direccion debe estar relleno!",
-            icon: "error",
-            button: "Ok",
-          });
-          return false;
-        }
 
-        if (email.value.trim() == "") {
-          // Si no se cumple la condicion...
+          regexnombre = /^[A-Z][A-z]+$/;
+        if (nombre.value.match(regexnombre)) {
+          console.log("Regex valido Nombre");
+          if (nombre.value.trim() == "") {
+              console.log(nombre.value.match(regexnombre));
+              // Si no se cumple la condicion...
+              swal({
+                title: "Error!",
+                text: "El campo nombre debe estar relleno!",
+                icon: "error",
+                button: "Ok",
+              });
+              return false;
+            }
+        }else{
           swal({
-            title: "Error!",
-            text: "El campo email debe estar relleno!",
-            icon: "error",
-            button: "Ok",
-          });
-          return false;
-        }
+                title: "Error!",
+                text: "El nombre debe tener una letra en mayuscula y no se aceptan numeros!",
+                icon: "error",
+                button: "Ok",
+              });
+                console.log("Error al validar Nombre");
+                return false;
+      }
 
-        if (telefono.value.trim() == "") {
-          // Si no se cumple la condicion...
+          regexdirecion = /[A-Za-z0-9'\.\-\s\,]/;
+        if (direccion.value.match(regexdirecion)) {
+          console.log("Regex valido Direccion");
+          if (direccion.value.trim() == "") {
+              console.log(direccion.value.match(regexdirecion));
+              // Si no se cumple la condicion...
+              swal({
+                title: "Error!",
+                text: "El campo direccion debe estar relleno!",
+                icon: "error",
+                button: "Ok",
+              });
+              return false;
+            }
+        }else{
           swal({
-            title: "Error!",
-            text: "El campo telefono debe estar relleno!",
-            icon: "error",
-            button: "Ok",
-          });
-          return false;
-        }
+                title: "Error!",
+                text: "El campo direccion es erroneo!",
+                icon: "error",
+                button: "Ok",
+              });
+                console.log("Error al validar Direccion");
+                return false;
+      }
+
+
+        regexemail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
+        if (email.value.match(regexemail)) {
+          console.log("Regex valido Email");
+          if (email.value.trim() == "") {
+              console.log(email.value.match(regexemail));
+              // Si no se cumple la condicion...
+              swal({
+                title: "Error!",
+                text: "El campo email debe estar relleno!",
+                icon: "error",
+                button: "Ok",
+              });
+              return false;
+            }
+        }else{
+          swal({
+                title: "Error!",
+                text: "El email es erroneo!",
+                icon: "error",
+                button: "Ok",
+              });
+                console.log("Error al validar Email");
+                return false;
+      }
+
+
+        regextelefono = /(\+34|0034|34)?[-]*(6|7)[ -]*([0-9][ -]*){8}/
+        if (telefono.value.match(regextelefono)) {
+          console.log("Regex valido Telefono");
+          if (telefono.value.trim() == "") {
+              console.log(telefono.value.match(regextelefono));
+              // Si no se cumple la condicion...
+              swal({
+                title: "Error!",
+                text: "El campo telefono debe estar relleno!",
+                icon: "error",
+                button: "Ok",
+              });
+              return false;
+            }
+        }else{
+          swal({
+                title: "Error!",
+                text: "El telefono es erroneo!",
+                icon: "error",
+                button: "Ok",
+              });
+                console.log("Error al validar Telefono");
+                return false;
+      }
 
         //Validando que se haya elegido alguna opción del radio
         //notese que seleccionamos por name ya que queremos todos
