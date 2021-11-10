@@ -21,12 +21,35 @@
         box-sizing: border-box;
         font-family: "Open Sans", sans-serif;
       }
+      .background-image {
+          position: fixed;
+          top: -10%;
+          left: -10%;
+          z-index: -1;
+          display: block;
+          background-image: url(https://www.eluniversal.com.mx/sites/default/files/2019/07/03/sky_rocket_pizza_menu_el_universal.jpg);
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+          background-position: center;
+          width: 120%;
+          height: 120%;
+          -webkit-filter: blur(2px);
+          -moz-filter: blur(2px);
+          -o-filter: blur(2px);
+          -ms-filter: blur(2px);
+          filter: blur(2px);
+          }
+
+
       h2 {
         font-family: "Arizonia", cursive;
         font-size: 3em;
         text-align: center;
         margin-top: 0;
         margin-bottom: 0;
+        color: #fff;
       }
       /*Posicionar un form a el lateral del a pagina*/
       form {
@@ -39,6 +62,7 @@
         background: #fff;
         box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2),
           0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        border-radius: 12%;
       }
       /*Estilos de los elementos del formulario*/
 
@@ -79,6 +103,7 @@
       /*legend en negrita*/
       legend {
         font-weight: bold;
+        font-size: larger;
       }
       /*posicionar el div pizza a la derecha y en el centro*/
       .pizza {
@@ -92,10 +117,13 @@
         border-radius: 50%;
         overflow: hidden;
         background: rgb(255, 255, 255);
-        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2),
-          0 5px 5px 0 rgba(0, 0, 0, 0.24);
-        background: rgb(216, 216, 216) url("./img/grande/todo.png") no-repeat
-          center;
+        box-shadow: 0 10px 20px 0 rgba(231, 231, 231, 0.2),
+          0 5px 5px 0 rgba(228, 228, 228, 0.24);
+        background-image: url("./img/grande/todo.png");
+        background-color: #f1f1f1;
+        background-position: center; 
+        background-repeat: no-repeat; 
+        background-size: cover; 
       }
       #gif {
         text-align: center;
@@ -174,8 +202,9 @@
     </style>
   </head>
   <body>
+    <div class="background-image"></div>
     <h2>Elige tu piza</h2>
-    <img src="./img/createpizza.gif" id="gif" alt="" />
+    <!-- <img src="./img/createpizza.gif" id="gif" alt="" /> -->
     <div class="pizza"></div>
     <form id="formulario" action="">
       <fieldset>
@@ -185,7 +214,6 @@
             type="text"
             name="name"
             id="nombre"
-            pattern="^[A-Z][A-z]+$"
             placeholder="Nombre"
           />
         </label>
@@ -194,7 +222,6 @@
             type="text"
             name="direccion"
             id="direccion"
-            pattern="[A-Za-z0-9'\.\-\s\,]"
             placeholder="Direccion"
           />
         </label>
@@ -203,7 +230,6 @@
             type="text"
             name="email"
             id="email"
-            pattern="[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+"
             placeholder="Email"
           />
         </label>
@@ -212,7 +238,6 @@
             type="text"
             name="phone"
             id="telefono"
-            pattern="(\+34|0034|34)?[-]*(6|7)[ -]*([0-9][ -]*){8}"
             placeholder="Telefono"
           />
         </label>
@@ -321,49 +346,109 @@
           return precio;
         }
 
-        if (nombre.value.trim() == "") {
-          // Si no se cumple la condicion...
-          swal({
-            title: "Error!",
-            text: "El campo nombre debe estar relleno!",
-            icon: "error",
-            button: "Ok",
-          });
-          return false;
-        }
 
-        if (direccion.value.trim() == "") {
-          // Si no se cumple la condicion...
-          swal({
-            title: "Error!",
-            text: "El campo direccion debe estar relleno!",
-            icon: "error",
-            button: "Ok",
-          });
-          return false;
-        }
 
-        if (email.value.trim() == "") {
-          // Si no se cumple la condicion...
+          regexnombre = /^[A-Z][A-z]+$/;
+        if (nombre.value.match(regexnombre)) {
+          console.log("Regex valido Nombre");
+          if (nombre.value.trim() == "") {
+              console.log(nombre.value.match(regexnombre));
+              // Si no se cumple la condicion...
+              swal({
+                title: "Error!",
+                text: "El campo nombre debe estar relleno!",
+                icon: "error",
+                button: "Ok",
+              });
+              return false;
+            }
+        }else{
           swal({
-            title: "Error!",
-            text: "El campo email debe estar relleno!",
-            icon: "error",
-            button: "Ok",
-          });
-          return false;
-        }
+                title: "Error!",
+                text: "El nombre debe tener una letra en mayuscula y no se aceptan numeros!",
+                icon: "error",
+                button: "Ok",
+              });
+                console.log("Error al validar Nombre");
+                return false;
+      }
 
-        if (telefono.value.trim() == "") {
-          // Si no se cumple la condicion...
+          regexdirecion = /[A-Za-z0-9'\.\-\s\,]/;
+        if (direccion.value.match(regexdirecion)) {
+          console.log("Regex valido Direccion");
+          if (direccion.value.trim() == "") {
+              console.log(direccion.value.match(regexdirecion));
+              // Si no se cumple la condicion...
+              swal({
+                title: "Error!",
+                text: "El campo direccion debe estar relleno!",
+                icon: "error",
+                button: "Ok",
+              });
+              return false;
+            }
+        }else{
           swal({
-            title: "Error!",
-            text: "El campo telefono debe estar relleno!",
-            icon: "error",
-            button: "Ok",
-          });
-          return false;
-        }
+                title: "Error!",
+                text: "El campo direccion es erroneo!",
+                icon: "error",
+                button: "Ok",
+              });
+                console.log("Error al validar Direccion");
+                return false;
+      }
+
+
+        regexemail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
+        if (email.value.match(regexemail)) {
+          console.log("Regex valido Email");
+          if (email.value.trim() == "") {
+              console.log(email.value.match(regexemail));
+              // Si no se cumple la condicion...
+              swal({
+                title: "Error!",
+                text: "El campo email debe estar relleno!",
+                icon: "error",
+                button: "Ok",
+              });
+              return false;
+            }
+        }else{
+          swal({
+                title: "Error!",
+                text: "El email es erroneo!",
+                icon: "error",
+                button: "Ok",
+              });
+                console.log("Error al validar Email");
+                return false;
+      }
+
+
+        regextelefono = /(\+34|0034|34)?[-]*(6|7)[ -]*([0-9][ -]*){8}/
+        if (telefono.value.match(regextelefono)) {
+          console.log("Regex valido Telefono");
+          if (telefono.value.trim() == "") {
+              console.log(telefono.value.match(regextelefono));
+              // Si no se cumple la condicion...
+              swal({
+                title: "Error!",
+                text: "El campo telefono debe estar relleno!",
+                icon: "error",
+                button: "Ok",
+              });
+              return false;
+            }
+        }else{
+          swal({
+                title: "Error!",
+                text: "El telefono es erroneo!",
+                icon: "error",
+                button: "Ok",
+              });
+                console.log("Error al validar Telefono");
+                return false;
+      }
 
         //Validando que se haya elegido alguna opción del radio
         //notese que seleccionamos por name ya que queremos todos
