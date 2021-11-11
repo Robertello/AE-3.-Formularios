@@ -359,15 +359,16 @@
 
 
 
-          regexnombre = /^[A-Z][A-z]+$/;
-        if (nombre.value.match(regexnombre)) {
+
+        if (!nombre.value.trim() == "") {
           console.log("Regex valido Nombre");
-          if (nombre.value.trim() == "") {
+          regexnombre = /^[A-Z][A-z]+$/;
+          if (!nombre.value.match(regexnombre) {
               console.log(nombre.value.match(regexnombre));
               // Si no se cumple la condicion...
               swal({
                 title: "Error!",
-                text: "El campo nombre debe estar relleno!",
+                text: "El nombre debe tener una letra en mayuscula y no se aceptan numeros!",
                 icon: "error",
                 button: "Ok",
               });
@@ -376,7 +377,7 @@
         }else{
           swal({
                 title: "Error!",
-                text: "El nombre debe tener una letra en mayuscula y no se aceptan numeros!",
+                text: "El campo nombre debe estar relleno!",
                 icon: "error",
                 button: "Ok",
               });
@@ -384,15 +385,16 @@
                 return false;
       }
 
-          regexdirecion = /[A-Za-z0-9'\.\-\s\,]/;
-        if (direccion.value.match(regexdirecion)) {
+
+        if (direccion.value.trim() == "") {
           console.log("Regex valido Direccion");
-          if (direccion.value.trim() == "") {
+           regexdirecion = /[A-Za-z0-9'\.\-\s\,]/;
+          if (direccion.value.match(regexdirecion)) {
               console.log(direccion.value.match(regexdirecion));
               // Si no se cumple la condicion...
               swal({
                 title: "Error!",
-                text: "El campo direccion debe estar relleno!",
+                text: "El campo direccion es erroneo!",
                 icon: "error",
                 button: "Ok",
               });
@@ -401,7 +403,7 @@
         }else{
           swal({
                 title: "Error!",
-                text: "El campo direccion es erroneo!",
+                text: "El campo direccion debe estar relleno!",
                 icon: "error",
                 button: "Ok",
               });
@@ -409,16 +411,15 @@
                 return false;
       }
 
-
-        regexemail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
-        if (email.value.match(regexemail)) {
+        if (!email.value.trim() == "") {
           console.log("Regex valido Email");
-          if (email.value.trim() == "") {
+          regexemail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
+          if (!email.value.match(regexemail)) {
               console.log(email.value.match(regexemail));
               // Si no se cumple la condicion...
               swal({
                 title: "Error!",
-                text: "El campo email debe estar relleno!",
+                text: "El email es erroneo!",
                 icon: "error",
                 button: "Ok",
               });
@@ -427,7 +428,7 @@
         }else{
           swal({
                 title: "Error!",
-                text: "El email es erroneo!",
+                text: "El campo email debe estar relleno!",
                 icon: "error",
                 button: "Ok",
               });
@@ -436,15 +437,16 @@
       }
 
 
-        regextelefono = /(\+34|0034|34)?[-]*(6|7)[ -]*([0-9][ -]*){8}/
-        if (telefono.value.match(regextelefono)) {
+            
+        if (!telefono.value.trim() == "") {
           console.log("Regex valido Telefono");
-          if (telefono.value.trim() == "") {
+          regextelefono = /(\+34|0034|34)?[-]*(6|7)[ -]*([0-9][ -]*){8}/
+          if (!telefono.value.match(regextelefono)) {
               console.log(telefono.value.match(regextelefono));
               // Si no se cumple la condicion...
               swal({
                 title: "Error!",
-                text: "El campo telefono debe estar relleno!",
+                text: "El telefono es erroneo!",
                 icon: "error",
                 button: "Ok",
               });
@@ -453,7 +455,7 @@
         }else{
           swal({
                 title: "Error!",
-                text: "El telefono es erroneo!",
+                text: "El campo telefono debe estar relleno!",
                 icon: "error",
                 button: "Ok",
               });
