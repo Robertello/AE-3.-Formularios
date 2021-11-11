@@ -386,10 +386,10 @@
       }
 
 
-        if (direccion.value.trim() == "") {
+        if (!direccion.value.trim() == "") {
           console.log("Regex valido Direccion");
            regexdirecion = /[A-Za-z0-9'\.\-\s\,]/;
-          if (direccion.value.match(regexdirecion)) {
+          if (!direccion.value.match(regexdirecion)) {
               console.log(direccion.value.match(regexdirecion));
               // Si no se cumple la condicion...
               swal({
