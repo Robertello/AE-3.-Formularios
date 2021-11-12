@@ -39,7 +39,7 @@ function validacion(){//Creamos funcion de validacion
     tamaño = document.getElementsByName("tamaño");
     var tamañoSelec = false;
     for(var i=0; i<tamaño.length; i++) {
-        if(tamaño[i].checked) {
+        if(!tamaño[i].checked) {
             tamañoSelec = true;
             console.log("Tamaño ok")
             break;
@@ -51,10 +51,25 @@ function validacion(){//Creamos funcion de validacion
         }
     }
 
-    ingrediente = document.getElementsByName("ingrediente");
+    ingedientes = document.getElementsByName("ingedientes");
+    var ingedientesSelec = false;
+    for(var i=0; i<ingedientes.length; i++) {
+        if(!ingedientes[i].checked) {
+            ingedientesSelec = true;
+            console.log("ingedientes ok")
+            break;
+        }
+        if (!ingedientesSelec) {
+        alert('ERROR! Debe seleccionar un tamaño de pizza.');//En caso de que no se cumpla, nos devuelve error.
+        console.log("Error al validar");
+        return false;
+        }
+
+
+    /*ingredientes = document.getElementsByName("ingredientes");
     var ingredSelec = false;
-    for(var i=0; i<ingrediente.length; i++) {
-        if(ingrediente[i].checked) {
+    for(var i=0; i<ingredientes.length; i++) {
+        if(ingredientes[i].checked) {
             ingredSelec = true;
             console.log("Ingredientes ok")
             break;
@@ -64,10 +79,12 @@ function validacion(){//Creamos funcion de validacion
         console.log("Error al validar");
         return false;
         }
-    }
+    }*/
     alert("Tramitando su pedido")
     return true;
 }
-    window.onload = function(){
-        formulario.onsubmit = validacion;//Se activa cuando pulsamos procesar pedido.
-    }
+
+window.onload = function(){
+    formulario.onsubmit = validacion;//Se activa cuando pulsamos procesar pedido.
+}
+}
